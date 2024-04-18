@@ -1,4 +1,6 @@
 import java.util.function.*;
+import java.util.stream.*;
+import java.util.*;
 
 public class Main{
   public static void main(String[] args) {
@@ -9,6 +11,12 @@ public class Main{
 
     System.out.println(f1.call(15));
     System.out.println(f2.call(66,"sanada"));
+
+    List<String> list = new ArrayList<>(Arrays.asList("さなだ", "くるみ", "きもてぃか", "へあっ！！"));
+    list = list.stream()
+            .map(x -> x.length() <= 4 ? x + "さん" : x )
+            .collect(Collectors.toList());
+    System.out.println(list);
   }
 }
 
