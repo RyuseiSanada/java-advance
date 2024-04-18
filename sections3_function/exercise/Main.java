@@ -5,7 +5,7 @@ public class Main{
     FuncList funclist = new FuncList();
 
     Func1 f1 = FuncList::isOdd;
-    Func2 f2 = FuncList::passCheck;
+    Func2 f2 = funclist::passCheck;
 
     System.out.println(f1.call(15));
     System.out.println(f2.call(66,"sanada"));
@@ -14,7 +14,7 @@ public class Main{
 
 class FuncList {
   public static boolean isOdd(int x) {return (x %  2 == 1);}
-  public static String passCheck(int point, String name) {
+  public String passCheck(int point, String name) {
     return String.format("%sさんは%s", name, point>65 ?"合格" : "不合格");
   }
 }
