@@ -3,16 +3,17 @@ import java.util.*;
 
 public class Main {
   public static void main(String[] args) {
-    
-    try(FileReader fr = new FileReader("pref.properties");)
-    {
-    Properties p = new Properties();
+    Employee tanaka = new Employee("田中", 41);
+    Department somu = new Department("総務部", tanaka);
 
-    p.load(fr);
-    System.out.println(p.getProperty("aichi.capital"));
-    }
-    catch (IOException e) {
-      System.out.println("エラー");
+    try(
+      FileOutputStream fos = new FileOutputStream("company.dat");
+      ObjectOutputStream oos = new ObjectOutputStream(fos);
+    ){
+      oos.writeObject(somu);
+      oos.flush();
+    } catch(IOException e){
+      System.out.printf("失敗");
     }
   }
 }
